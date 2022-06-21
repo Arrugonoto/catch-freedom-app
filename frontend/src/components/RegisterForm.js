@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import axios from "../api/axios";
+
+const REGISTER_URL = "/users/register";
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
+  const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,16 +23,42 @@ const RegisterForm = () => {
     }));
   };
 
-  const registerUser = (e) => {
+  const registerUser = async (e) => {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      console.error(`Passwords doesn't match`);
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        REGISTER_URL,
+        JSON.stringify({ name, email, password }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      console.log(response.data);
+      setIsSuccess(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/dashboard");
+    }
+  }, [isSuccess]);
 
   return (
     <div className="center-container">
       <section className="form-container">
         <form onSubmit={registerUser} className="register-form">
           <h1>Nice to see You here 🤝</h1>
-          <label htmlFor="">Name</label>
+          <label htmlFor="name">Name</label>
           <input
             type="text"
             id="name"
@@ -35,8 +66,9 @@ const RegisterForm = () => {
             value={name}
             placeholder="username"
             onChange={onChange}
+            required
           />
-          <label htmlFor="">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
@@ -44,8 +76,9 @@ const RegisterForm = () => {
             value={email}
             placeholder="username@company.com"
             onChange={onChange}
+            required
           />
-          <label htmlFor="">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"
@@ -53,8 +86,9 @@ const RegisterForm = () => {
             value={password}
             placeholder="password"
             onChange={onChange}
+            required
           />
-          <label htmlFor="">Confirm password</label>
+          <label htmlFor="confirmPassword">Confirm password</label>
           <input
             type="password"
             id="confirmPassword"
@@ -62,6 +96,7 @@ const RegisterForm = () => {
             value={confirmPassword}
             placeholder="confirm password"
             onChange={onChange}
+            required
           />
           <button type="submit" className="btn btn-login">
             Create account

@@ -24,7 +24,7 @@ const LoginForm = () => {
     <section className="form-container">
       <form onSubmit={loginUser} className="login-form">
         <h1>Welcome back 👋</h1>
-        <label htmlFor="">Email</label>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
@@ -32,11 +32,12 @@ const LoginForm = () => {
           value={email}
           placeholder="username@company.com"
           onChange={onChange}
+          required
         />
         <div className="error">
           <p className="wrong-email">wrong email</p>
         </div>
-        <label htmlFor="">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
@@ -44,6 +45,7 @@ const LoginForm = () => {
           value={password}
           placeholder="password"
           onChange={onChange}
+          required
         />
         <div className="error">
           <p className="wrong-password">wrong password</p>
