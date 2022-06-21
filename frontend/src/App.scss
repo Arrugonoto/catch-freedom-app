@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto:wght@300;400;500;700;900&display=swap");
+
+root {
+  --clr-primary: rgb(255, 255, 255);
+  --clr-secondary: rgb(6, 10, 48);
+  --clr-tertiary: rgb(0, 81, 212);
+  --clr-btn-login: rgb(3, 79, 214);
+
+  --clr-text-white: rgb(255, 255, 255);
+  --clr-text-black: rgb(13, 14, 18);
+  --clr-error: rgb(255, 20, 27);
+
+  font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  background-color: var(--clr-primary);
+  color: var(--clr-text-black);
+  font-family: "Roboto", "Lato", sans-serif;
+}
+
+.App {
+  width: 100;
+  text-align: center;
+}
+
+.center-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-mainpage {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 30rem;
+  .login-form,
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 900;
+      margin-bottom: 4rem;
+      letter-spacing: 1px;
+    }
+    label,
+    input {
+      width: 100%;
+      margin: 0.3rem;
+      font-size: 0.9rem;
+    }
+    label {
+      font-weight: 600;
+    }
+    input {
+      border-radius: 2rem;
+      padding: 1rem;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      outline: 1px solid rgba(0, 0, 0, 0);
+      transition: all 0.2s linear;
+      &:focus {
+        border: 1px solid rgba(0, 0, 0, 1);
+        outline: 1px solid rgb(0, 0, 0);
+      }
+    }
+    .btn-login {
+      padding: 1rem;
+      border-radius: 2rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 2.2rem;
+      background-color: rgb(3, 79, 214);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s linear;
+      &:hover {
+        background-color: rgb(48, 109, 214);
+      }
+    }
+    .error {
+      width: 100%;
+      text-align: left;
+      color: rgb(255, 17, 17);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+  }
+  .register-user,
+  .login-user {
+    margin-top: 2rem;
+    text-decoration: none;
+    color: rgb(3, 79, 214);
+    cursor: default;
+    span {
+      cursor: pointer;
+      transition: all 0.2s linear;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
