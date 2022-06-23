@@ -75,7 +75,7 @@ const LoginForm = () => {
           required
         />
         <div className="error">
-          <p className="wrong-email">Your eamil is invalid</p>
+          <p className="wrong-email"></p>
         </div>
         <label htmlFor="password">Password</label>
         <input
@@ -88,7 +88,7 @@ const LoginForm = () => {
           required
         />
         <div className="error">
-          <p className="wrong-password">wrong password</p>
+          <p className="wrong-password"></p>
         </div>
         <button type="submit" className="btn btn-login">
           Login
