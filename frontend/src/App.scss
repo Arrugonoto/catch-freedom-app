@@ -1,14 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto:wght@300;400;500;700;900&display=swap");
 
-root {
+:root {
   --clr-primary: rgb(255, 255, 255);
   --clr-secondary: rgb(6, 10, 48);
   --clr-tertiary: rgb(0, 81, 212);
   --clr-btn-login: rgb(3, 79, 214);
+  --clr-gray: rgb(165, 165, 165);
 
   --clr-text-white: rgb(255, 255, 255);
   --clr-text-black: rgb(13, 14, 18);
   --clr-error: rgb(255, 20, 27);
+
+  --clr-rent: rgb(18, 194, 151);
 
   font-size: 16px;
 }
@@ -16,16 +19,25 @@ root {
 *,
 *::before,
 *::after {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   background-color: var(--clr-primary);
   color: var(--clr-text-black);
   font-family: "Roboto", "Lato", sans-serif;
+}
+
+button {
+  cursor: pointer;
 }
 
 .App {
@@ -35,35 +47,59 @@ body {
 
 .center-container {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
 .home-mainpage {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
   min-height: 100vh;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .form-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   padding: 1rem;
-  width: 30rem;
+  width: 32rem;
   .login-form,
   .register-form {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     text-align: left;
     width: 100%;
     h1 {
       text-align: center;
-      font-size: 2.2rem;
+      font-size: 2.6rem;
       font-weight: 900;
       margin-bottom: 4rem;
       letter-spacing: 1px;
@@ -82,6 +118,8 @@ body {
       padding: 1rem;
       border: 1px solid rgba(0, 0, 0, 0.5);
       outline: 1px solid rgba(0, 0, 0, 0);
+      -webkit-transition: all 0.2s linear;
+      -o-transition: all 0.2s linear;
       transition: all 0.2s linear;
       &:focus {
         border: 1px solid rgba(0, 0, 0, 1);
@@ -100,6 +138,8 @@ body {
       color: #fff;
       font-weight: 600;
       font-size: 0.9rem;
+      -webkit-transition: all 0.2s linear;
+      -o-transition: all 0.2s linear;
       transition: all 0.2s linear;
       &:hover {
         background-color: rgb(48, 109, 214);
@@ -122,9 +162,358 @@ body {
     cursor: default;
     span {
       cursor: pointer;
+      -webkit-transition: all 0.2s linear;
+      -o-transition: all 0.2s linear;
       transition: all 0.2s linear;
       &:hover {
         text-decoration: underline;
+      }
+    }
+  }
+}
+
+.dashboard-container,
+.renteddevices-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.menu-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100vh;
+  width: 15%;
+  min-width: 16rem;
+  background: var(--clr-secondary);
+  padding: 1rem 1.2rem;
+  color: #fff;
+  .user-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 1rem;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    h1 {
+      font-family: "Roboto", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+  }
+  .menu-navigation {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    .links-wrapper {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      width: 100%;
+      ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: 100%;
+        .nav-link {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          text-decoration: none;
+          width: 100%;
+          font-size: 1.2rem;
+          font-weight: 500;
+        }
+        li {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          width: 100%;
+          color: var(--clr-gray);
+          padding: 0.8rem;
+          -webkit-transition: all 0.2s linear;
+          -o-transition: all 0.2s linear;
+          transition: all 0.2s linear;
+          border-radius: 0.5rem;
+          gap: 0.5rem;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          &:hover {
+            background-color: var(--clr-tertiary);
+            color: #fff;
+          }
+          i {
+            width: 2rem;
+          }
+          p {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+    .logout-wrapper {
+      .btn-logout {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        background-color: transparent;
+        color: var(--clr-gray);
+        cursor: pointer;
+        gap: 0.3rem;
+        font-size: 1.1rem;
+        -webkit-transition: all 0.2s linear;
+        -o-transition: all 0.2s linear;
+        transition: all 0.2s linear;
+        p {
+          font-size: 0.8rem;
+        }
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.devices-container {
+  width: 85%;
+  height: 100vh;
+  overflow-y: scroll;
+  .devices-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+    border-bottom: 1px solid rgb(236, 236, 236);
+    -webkit-box-shadow: 0px 0px 0.2rem 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 0.2rem 0px rgba(0, 0, 0, 0.1);
+    h1 {
+      font-size: 1.9rem;
+      text-align: left;
+    }
+  }
+  .devices-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 2rem;
+  }
+  .devices-sorting-bar {
+    .sorting-wrapper {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(247, 247, 247);
+      padding: 1rem;
+      border-radius: 0.6rem;
+      .name-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 30%;
+        .btn-sort {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          border: none;
+          background-color: transparent;
+          font-size: 0.9rem;
+          font-weight: 600;
+          gap: 0.5rem;
+          cursor: pointer;
+        }
+      }
+      .namereturn-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 30%;
+        .btn-sort {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          border: none;
+          background-color: transparent;
+          font-size: 0.9rem;
+          font-weight: 600;
+          gap: 0.5rem;
+          cursor: pointer;
+        }
+      }
+      .returndate-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 60%;
+        .btn-sort {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          border: none;
+          background-color: transparent;
+          font-size: 0.9rem;
+          font-weight: 600;
+          gap: 0.5rem;
+          cursor: pointer;
+        }
+      }
+      .rent-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 10%;
+        p {
+          font-size: 1rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .deviceslist-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    .single-device {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid rgb(230, 230, 230);
+      .device-data {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 30%;
+        font-weight: 600;
+        font-size: 0.9rem;
+        .device-available {
+          color: var(--clr-rent);
+        }
+        .device-rented {
+          color: var(--clr-error);
+        }
+      }
+      .rented-data {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 30%;
+      }
+      .rented-date {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 60%;
+      }
+      .device-btn-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 10%;
+        .btn-rent {
+          color: var(--clr-rent);
+          padding: 0.4rem 1.6rem;
+          border: 1px solid var(--clr-rent);
+          border-radius: 0.35rem;
+          background-color: rgba(18, 194, 150, 0.2);
+          font-weight: 600;
+          -webkit-transition: all 0.2s linear;
+          -o-transition: all 0.2s linear;
+          transition: all 0.2s linear;
+          &:hover {
+            background-color: rgb(124, 255, 218);
+          }
+        }
+        .btn-rented {
+          color: rgb(189, 189, 189);
+          padding: 0.35rem 1.6rem;
+          border: 1px solid rgb(189, 189, 189);
+          border-radius: 0.4rem;
+          font-weight: 600;
+          background-color: rgba(189, 189, 189, 0.425);
+          cursor: default;
+        }
+        .btn-return {
+          color: var(--clr-rent);
+          padding: 0.4rem 1.6rem;
+          border: 1px solid var(--clr-rent);
+          border-radius: 0.35rem;
+          background-color: rgba(18, 194, 150, 0.2);
+          font-weight: 600;
+          -webkit-transition: all 0.2s linear;
+          -o-transition: all 0.2s linear;
+          transition: all 0.2s linear;
+          &:hover {
+            background-color: rgb(124, 255, 218);
+          }
+        }
       }
     }
   }

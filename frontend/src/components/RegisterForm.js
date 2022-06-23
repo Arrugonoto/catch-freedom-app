@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import AuthContext from "../context/authProvider";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 
 const REGISTER_URL = "/users/register";
 
 const RegisterForm = () => {
+  const { setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
@@ -15,6 +17,15 @@ const RegisterForm = () => {
   });
 
   const { name, email, password, confirmPassword } = formData;
+
+  const clearFields = () => {
+    setFormData({
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+  };
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -41,7 +52,12 @@ const RegisterForm = () => {
         }
       );
       console.log(response.data);
+      const accessToken = response?.data?.token;
+      const userRole = response?.data?.role;
+      const name = response?.data?.name;
+      setAuth({ name, email, password, userRole, accessToken });
       setIsSuccess(true);
+      clearFields();
     } catch (error) {
       console.log(error);
     }

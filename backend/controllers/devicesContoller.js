@@ -5,7 +5,7 @@ const Device = require("../models/deviceModel");
 // @route GET api/devices
 // @access Private
 const getDevices = asyncHandler(async (req, res) => {
-  const devices = await Device.find();
+  const devices = await Device.find().sort({ model: 1 });
 
   res.status(200).json(devices);
 });
@@ -13,7 +13,9 @@ const getDevices = asyncHandler(async (req, res) => {
 // @route GET api/devices/display-rented
 // @access Private
 const displayRentedDevices = asyncHandler(async (req, res) => {
-  const devices = await Device.find({ rentedBy: req.user.id });
+  const devices = await Device.find({ rentedBy: req.user.id }).sort({
+    model: 1,
+  });
 
   res.status(200).json(devices);
 });
@@ -86,6 +88,7 @@ const rentDevice = asyncHandler(async (req, res) => {
       new: true,
     }
   );
+
   res.status(200).json(rentedDevice);
 });
 

@@ -6,6 +6,8 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import RegisterForm from "./components/RegisterForm";
 import Dashboard from "./pages/Dashboard";
+import RentedDevices from "./pages/RentedDevices";
+import AdminPanel from "./pages/AdminPanel";
 
 function App() {
   // const [isSuccess, setIsSuccess] = useState(false);
@@ -24,6 +26,16 @@ function App() {
             path="/dashboard"
             caseSensitive={false}
             element={<Dashboard />}
+          ></Route>
+          <Route
+            path="/devices/rented"
+            caseSensitive={false}
+            element={<RentedDevices />}
+          ></Route>
+          <Route
+            path="/manage"
+            caseSensitive={false}
+            element={<AdminPanel />}
           ></Route>
         </Routes>
         {/* {isSuccess ? <Navigate to="/dashboard" /> : <Navigate to="/register" />} */}

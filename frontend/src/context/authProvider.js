@@ -1,15 +1,15 @@
-import axios from "axios";
+import { createContext, useState } from "react";
 
-const API_URL = "/api/users/register";
+const AuthContext = createContext({});
 
-const register = async (userData) => {
-  const response = await axios.post(API_URL, userData);
+export const AuthProvider = ({ children }) => {
+  const [auth, setAuth] = useState({});
 
-  return response.data;
+  return (
+    <AuthContext.Provider value={{ auth, setAuth }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
-const authService = {
-  register,
-};
-
-export default authService;
+export default AuthContext;

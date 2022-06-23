@@ -1,13 +1,27 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import AuthContext from "../context/authProvider";
+import axios from "../api/axios";
+import { Link, useNavigate } from "react-router-dom";
+
+const LOGIN_URL = "/users/login";
 
 const LoginForm = () => {
+  const { setAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
   const { email, password } = formData;
+
+  const clearFields = () => {
+    setFormData({
+      email: "",
+      password: "",
+    });
+  };
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -16,9 +30,35 @@ const LoginForm = () => {
     }));
   };
 
-  const loginUser = (e) => {
+  const loginUser = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        LOGIN_URL,
+        JSON.stringify({ email, password }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+
+      const accessToken = response?.data?.token;
+      const userRole = response?.data?.role;
+      const name = response?.data?.name;
+      setAuth({ name, email, password, userRole, accessToken });
+      setIsSuccess(true);
+      clearFields();
+    } catch (error) {
+      console.error(error);
+    }
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/dashboard");
+    }
+  }, [isSuccess]);
 
   return (
     <section className="form-container">
@@ -35,7 +75,7 @@ const LoginForm = () => {
           required
         />
         <div className="error">
-          <p className="wrong-email">wrong email</p>
+          <p className="wrong-email">Your eamil is invalid</p>
         </div>
         <label htmlFor="password">Password</label>
         <input
