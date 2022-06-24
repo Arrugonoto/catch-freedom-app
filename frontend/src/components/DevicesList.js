@@ -24,16 +24,14 @@ const DevicesList = () => {
     }
   };
 
-  const rentDevice = async (device_id) => {
-    console.log(auth.accessToken);
+  const rentDevice = async (device_id, req, res) => {
     try {
       const response = await axios.put(`${DEVICES_URL}/rent/${device_id}`, {
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${auth.accessToken}`,
-          withCredentials: true,
         },
       });
+      console.log(req);
     } catch (error) {
       console.log(error);
     }

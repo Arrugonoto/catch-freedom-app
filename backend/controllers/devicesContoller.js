@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 
 const Device = require("../models/deviceModel");
 
+// GET DEVICES
 // @route GET api/devices
 // @access Private
 const getDevices = asyncHandler(async (req, res) => {
@@ -10,6 +11,7 @@ const getDevices = asyncHandler(async (req, res) => {
   res.status(200).json(devices);
 });
 
+// GET RENTED DEVICES BY USER
 // @route GET api/devices/display-rented
 // @access Private
 const displayRentedDevices = asyncHandler(async (req, res) => {
@@ -20,6 +22,7 @@ const displayRentedDevices = asyncHandler(async (req, res) => {
   res.status(200).json(devices);
 });
 
+// CREATE NEW DEVICE
 // @route POST api/devices
 // @access Private
 const addNewDevice = asyncHandler(async (req, res) => {
@@ -45,6 +48,7 @@ const addNewDevice = asyncHandler(async (req, res) => {
   res.status(200).json(device);
 });
 
+// SEND TO REPAIR
 // @route PUT api/devices/repair/:id
 // @access Private
 const sendToRepair = asyncHandler(async (req, res) => {
@@ -71,6 +75,7 @@ const sendToRepair = asyncHandler(async (req, res) => {
   }
 });
 
+// RENT DEVICE
 // @route PUT api/devices/rent/:id
 // @access Private
 const rentDevice = asyncHandler(async (req, res) => {
@@ -92,6 +97,7 @@ const rentDevice = asyncHandler(async (req, res) => {
   res.status(200).json(rentedDevice);
 });
 
+// RETURN DEVICE
 // @route PUT api/devices/return/:id
 // @access Private
 const returnDevice = asyncHandler(async (req, res) => {
@@ -112,6 +118,7 @@ const returnDevice = asyncHandler(async (req, res) => {
   res.status(200).json(returnedDevice);
 });
 
+// DELETE DEVICE
 // @route DELETE api/devices/:id
 // @access Private
 const deleteDeviceFromAssortment = asyncHandler(async (req, res) => {
@@ -122,11 +129,19 @@ const deleteDeviceFromAssortment = asyncHandler(async (req, res) => {
     throw new Error("Device not found");
   }
 
-  await device.remove();
+  if (device.rentedBy === "" && req.user.role === "administrator") {
+    await device.remove();
 
-  res.status(200).json({
-    message: `Deleting device ${req.params.id} from product range. Device specification: ${device}`,
-  });
+    res.status(200).json({
+      message: `Deleting device ${req.params.id} from product range. Device specification: ${device}`,
+    });
+  } else if (req.user.role !== "administrator") {
+    res.status(400);
+    throw new Error(`Not authorized`);
+  } else {
+    res.status(400);
+    throw new Error(`Rented device can't be deleted from product range`);
+  }
 });
 
 module.exports = {

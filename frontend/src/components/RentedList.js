@@ -53,23 +53,29 @@ const RentedList = () => {
           </article>
         </div>
         <div className="deviceslist-wrapper">
-          {devicesList.map((el) => {
-            return (
-              <article className="single-device" key={el._id}>
-                <div className="rented-data">
-                  <p className="device-name">{el.model}</p>
-                </div>
-                <div className="rented-date">
-                  <p className="device-date">
-                    {moment(el.createdAt).format("DD-MM-YYYY")}
-                  </p>
-                </div>
-                <div className="device-btn-wrapper">
-                  <button className="btn btn-return">Return</button>
-                </div>
-              </article>
-            );
-          })}
+          {devicesList.length === 0 ? (
+            <div className="deviceslist-norented">
+              <h2>Currently, You don't have any rented devices</h2>
+            </div>
+          ) : (
+            devicesList.map((el) => {
+              return (
+                <article className="single-device" key={el._id}>
+                  <div className="rented-data">
+                    <p className="device-name">{el.model}</p>
+                  </div>
+                  <div className="rented-date">
+                    <p className="device-date">
+                      {moment(el.createdAt).format("DD-MM-YYYY")}
+                    </p>
+                  </div>
+                  <div className="device-btn-wrapper">
+                    <button className="btn btn-return">Return</button>
+                  </div>
+                </article>
+              );
+            })
+          )}
         </div>
       </div>
     </section>
