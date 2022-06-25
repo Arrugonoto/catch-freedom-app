@@ -24,14 +24,14 @@ const DevicesList = () => {
     }
   };
 
-  const rentDevice = async (device_id, req, res) => {
+  const rentDevice = async (device_id) => {
     try {
-      const response = await axios.put(`${DEVICES_URL}/rent/${device_id}`, {
+      const response = await axios.put(`${DEVICES_URL}/rent/${device_id}`, "", {
         headers: {
           Authorization: `Bearer ${auth.accessToken}`,
         },
       });
-      console.log(req);
+      return response.data;
     } catch (error) {
       console.log(error);
     }
@@ -96,7 +96,7 @@ const DevicesList = () => {
                       <p>Rent</p>
                     </button>
                   ) : (
-                    <button className="btn-rented" disabled>
+                    <button className="btn-disabled" disabled>
                       <p>Rent</p>
                     </button>
                   )}

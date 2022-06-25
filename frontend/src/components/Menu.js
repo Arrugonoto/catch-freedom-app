@@ -34,12 +34,14 @@ const Menu = () => {
                 <p>Rented devices</p>
               </li>
             </Link>
-            <Link to="/manage" className="nav-link">
-              <li>
-                <i className="fa-solid fa-screwdriver-wrench"></i>
-                <p>Manage devices</p>
-              </li>
-            </Link>
+            {auth.userRole === "administrator" && (
+              <Link to="/manage" className="nav-link">
+                <li>
+                  <i className="fa-solid fa-screwdriver-wrench"></i>
+                  <p>Manage devices</p>
+                </li>
+              </Link>
+            )}
           </ul>
         </div>
         <div className="logout-wrapper">

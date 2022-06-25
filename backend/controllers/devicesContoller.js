@@ -59,10 +59,10 @@ const sendToRepair = asyncHandler(async (req, res) => {
     throw new Error("Device not found");
   }
 
-  if (device.rentedBy === "") {
+  if (device.rentedBy === "" || !device.rentedBy) {
     const deviceInRepair = await Device.findByIdAndUpdate(
       req.params.id,
-      { availability: "Not available", status: "Sent for repair" },
+      { availability: "Not available", status: "In repair" },
       {
         new: true,
       }
@@ -129,7 +129,10 @@ const deleteDeviceFromAssortment = asyncHandler(async (req, res) => {
     throw new Error("Device not found");
   }
 
-  if (device.rentedBy === "" && req.user.role === "administrator") {
+  if (
+    (device.rentedBy === "" && req.user.role === "administrator") ||
+    (!device.rentedBy && req.user.role === "administrator")
+  ) {
     await device.remove();
 
     res.status(200).json({

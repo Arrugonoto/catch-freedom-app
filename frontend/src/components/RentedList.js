@@ -4,6 +4,7 @@ import axios from "../api/axios";
 import moment from "moment";
 
 const DEVICES_URL = "/devices/display-rented";
+const RETURN_URL = "/devices";
 
 const RentedList = () => {
   const { auth } = useContext(AuthContext);
@@ -24,7 +25,22 @@ const RentedList = () => {
     }
   };
 
-  const returnDevice = async () => {};
+  const returnDevice = async (device_id) => {
+    try {
+      const response = await axios.put(
+        `${RETURN_URL}/return/${device_id}`,
+        "",
+        {
+          headers: {
+            Authorization: `Bearer ${auth.accessToken}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     getDevicesList();
@@ -70,7 +86,14 @@ const RentedList = () => {
                     </p>
                   </div>
                   <div className="device-btn-wrapper">
-                    <button className="btn btn-return">Return</button>
+                    <button
+                      onClick={() => {
+                        returnDevice(el._id);
+                      }}
+                      className="btn btn-return"
+                    >
+                      Return
+                    </button>
                   </div>
                 </article>
               );
