@@ -159,29 +159,6 @@ const DeviceListAdmin = ({ displayDeviceMenu }) => {
           })}
         </div>
       </div>
-      {/* <div className="delete-modal-container" ref={displayModal}>
-        <div className="delete-modal-wrapper">
-          <h2>Are you sure you want to remove "device" from assortment?</h2>
-          <div className="btns-wrapper">
-            <button
-              onClick={() => {
-                confirmDelete();
-              }}
-              className="btn btn-delete"
-            >
-              Delete
-            </button>
-            <button
-              onClick={() => {
-                closeModal();
-              }}
-              className="btn btn-cancel"
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      </div> */}
     </section>
   );
 };

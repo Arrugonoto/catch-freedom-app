@@ -1,17 +1,15 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import AuthContext from "../context/authProvider";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 
 const REGISTER_URL = "/users/register";
 
-const EMAIL_REGEX = /^([a-z\d\._]+)@(company\.com)/;
-
-// const testName = "k.klekot@company.com";
-
-// console.log(EMAIL_REGEX.test(testName));
+const EMAIL_REGEX = /^([a-z\d\._]+)@(company\.com)$/;
 
 const RegisterForm = () => {
+  const emailInfo = useRef(null);
+  const inputEmail = useRef(null);
   const { setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isSuccess, setIsSuccess] = useState(false);
@@ -21,6 +19,7 @@ const RegisterForm = () => {
     password: "",
     confirmPassword: "",
   });
+  const [validEmail, setValidEmail] = useState(false);
   const [emailErrMessage, setEmailErrMessage] = useState(false);
   const [passwordErrMessage, setPasswordErrMessage] = useState(false);
 
@@ -48,7 +47,12 @@ const RegisterForm = () => {
     if (password !== confirmPassword) {
       console.error(`Passwords doesn't match`);
       setPasswordErrMessage(true);
+      return;
+    }
 
+    if (!validEmail) {
+      console.error("Badly formatted email address");
+      setEmailErrMessage(true);
       return;
     }
 
@@ -82,8 +86,14 @@ const RegisterForm = () => {
     setPasswordErrMessage(false);
   }, [password, confirmPassword]);
 
+  useEffect(() => {
+    const isEmailValid = EMAIL_REGEX.test(email);
+    setValidEmail(isEmailValid);
+    setEmailErrMessage(false);
+  }, [email]);
+
   return (
-    <div className="center-container">
+    <div className="center-register-container">
       <section className="form-container">
         <form onSubmit={registerUser} className="register-form">
           <h1>Nice to see You here 🤝</h1>
@@ -105,8 +115,41 @@ const RegisterForm = () => {
             value={email}
             placeholder="username@company.com"
             onChange={onChange}
+            onFocus={() => {
+              emailInfo.current.classList.add("show-info");
+            }}
+            onBlur={() => {
+              emailInfo.current.classList.remove("show-info");
+            }}
+            className={`input-email ${emailErrMessage ? "error-border" : ""}`}
+            ref={inputEmail}
             required
           />
+          <div className="email-error-container">
+            {emailErrMessage ? (
+              <div className="email-error-wrapper">
+                <i className="fa-solid fa-circle-exclamation"></i>
+                <p>Invalid email syntax</p>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="email-syntax-container" ref={emailInfo}>
+            <div className="email-syntax-wrapper">
+              <div className="email-syntax-title">
+                <i className="fa-solid fa-circle-question"></i>
+                <h2>Email must contain "company.com" domain.</h2>
+              </div>
+              <ul className="email-syntax-list">
+                <h3>Allowed characters:</h3>
+                <li>letters</li>
+                <li>numbers</li>
+                <li>underscore</li>
+                <li>dot</li>
+              </ul>
+            </div>
+          </div>
           <label htmlFor="password">Password</label>
           <input
             type="password"
