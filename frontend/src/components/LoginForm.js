@@ -45,8 +45,8 @@ const LoginForm = () => {
 
       const accessToken = response?.data?.token;
       const userRole = response?.data?.role;
-      const name = response?.data?.name;
-      setAuth({ name, email, password, userRole, accessToken });
+      const username = response?.data?.name;
+      setAuth({ username, email, password, userRole, accessToken });
       setIsSuccess(true);
       clearFields();
     } catch (error) {

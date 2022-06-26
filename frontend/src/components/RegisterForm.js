@@ -51,15 +51,14 @@ const RegisterForm = () => {
           withCredentials: true,
         }
       );
-      console.log(response.data);
       const accessToken = response?.data?.token;
       const userRole = response?.data?.role;
-      const name = response?.data?.name;
-      setAuth({ name, email, password, userRole, accessToken });
+      const username = response?.data?.name;
+      setAuth({ username, email, password, userRole, accessToken });
       setIsSuccess(true);
       clearFields();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

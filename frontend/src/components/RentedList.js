@@ -49,7 +49,7 @@ const RentedList = () => {
   return (
     <section className="devices-container">
       <div className="devices-title">
-        <h1>Devices list</h1>
+        <h1>Rented devices</h1>
       </div>
       <div className="devices-wrapper">
         <div className="devices-sorting-bar">

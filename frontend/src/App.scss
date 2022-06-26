@@ -131,6 +131,7 @@ button {
       -webkit-transition: all 0.2s linear;
       -o-transition: all 0.2s linear;
       transition: all 0.2s linear;
+      margin-bottom: 1.2rem;
       &:focus {
         border: 1px solid rgba(0, 0, 0, 1);
         outline: 1px solid rgb(0, 0, 0);
@@ -215,6 +216,7 @@ button {
     align-items: center;
     font-size: 1.6rem;
     margin-bottom: 2rem;
+    padding: 1.5rem 0rem 0rem 0.6rem;
     h1 {
       font-family: "Roboto", sans-serif;
       font-size: 0.8rem;
@@ -308,6 +310,7 @@ button {
         -webkit-transition: all 0.2s linear;
         -o-transition: all 0.2s linear;
         transition: all 0.2s linear;
+        padding: 0rem 0rem 1.6rem 0.8rem;
         p {
           font-size: 0.8rem;
         }
@@ -763,15 +766,29 @@ button {
 
 .new-device-container {
   display: flex;
+  position: relative;
   width: 100%;
   height: 100vh;
   justify-content: flex-start;
-  align-items: center;
+  overflow-y: scroll;
   .form-wrapper {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    width: 30rem;
+    h2 {
+      font-weight: 500;
+      font-size: 1.4rem;
+      padding-bottom: 0.2rem;
+      margin-bottom: 0.8rem;
+      border-bottom: 0.2rem solid var(--clr-tertiary);
+      width: 80%;
+    }
     .new-device-form {
       display: flex;
-      width: 30rem;
+      width: 100%;
       padding: 1rem;
       fieldset {
         display: flex;
@@ -790,20 +807,74 @@ button {
         input {
           padding: 0.8rem 0.6rem;
           margin-bottom: 2rem;
-          font-size: 1.1rem;
+          font-size: 1rem;
           font-weight: 400;
           border-radius: 1.2rem;
           border: none;
           background-color: rgb(241, 241, 241);
+          outline: none;
+          border: 1px solid rgba(0, 0, 0, 0);
+          box-shadow: 0px 0px 0.3rem 0px rgba(255, 255, 255, 0);
+          transition: all 0.2s linear;
+          &:focus,
+          &:active {
+            border: 1px solid rgb(0, 0, 0);
+          }
+          &:hover {
+            box-shadow: 0px 0px 0.2rem 0px rgba(3, 80, 214, 0.5);
+          }
         }
         .btn-submit-device {
-          border: 1px solid var(--clr-btn-login);
-          font-size: 1rem;
+          border: 2px solid var(--clr-btn-login);
+          font-size: 1.1rem;
           font-weight: 600;
           padding: 1rem;
           border-radius: 1rem;
+          background-color: transparent;
+          color: var(--clr-btn-login);
+          transition: all 0.2s linear;
+          &:hover {
+            color: #fafafa;
+            background-color: var(--clr-btn-login);
+          }
         }
       }
     }
+  }
+  .btn-close-wrapper {
+    position: absolute;
+    right: 4rem;
+    top: 2rem;
+    .btn-close {
+      background-color: transparent;
+      border: none;
+      font-size: 2rem;
+      border-radius: 2rem;
+      transition: all 0.2s linear;
+      padding: 0.5rem 1rem;
+      &:hover {
+        background-color: rgb(241, 241, 241);
+      }
+    }
+  }
+  .modal-container {
+    position: absolute;
+    bottom: 6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: all 0.3s linear;
+    .modal-wrapper {
+      padding: 2rem;
+      border-radius: 1rem;
+      background-color: var(--clr-rent);
+      color: #fafafa;
+      box-shadow: 0px 0px 2rem 0px rgba(0, 0, 0, 0.35);
+    }
+  }
+  .modal-container.show {
+    left: 50%;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-6rem);
   }
 }

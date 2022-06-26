@@ -17,7 +17,7 @@ const Menu = () => {
         <div>
           <i className="fa-solid fa-user"></i>
         </div>
-        <h1>{auth.name}</h1>
+        <h1>{auth.username}</h1>
       </div>
       <nav className="menu-navigation">
         <div className="links-wrapper">
