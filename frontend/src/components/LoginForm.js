@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import AuthContext from "../context/authProvider";
 import axios from "../api/axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,6 +13,7 @@ const LoginForm = () => {
     email: "",
     password: "",
   });
+  const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
 
   const { email, password } = formData;
 
@@ -51,6 +52,7 @@ const LoginForm = () => {
       clearFields();
     } catch (error) {
       console.error(error);
+      setDisplayErrorMessage(true);
     }
   };
 
@@ -59,6 +61,10 @@ const LoginForm = () => {
       navigate("/dashboard");
     }
   }, [isSuccess]);
+
+  useEffect(() => {
+    setDisplayErrorMessage(false);
+  }, [email, password]);
 
   return (
     <section className="form-container">
@@ -70,13 +76,10 @@ const LoginForm = () => {
           id="email"
           name="email"
           value={email}
-          placeholder="username@company.com"
+          placeholder="email@company.com"
           onChange={onChange}
           required
         />
-        <div className="error">
-          <p className="wrong-email"></p>
-        </div>
         <label htmlFor="password">Password</label>
         <input
           type="password"
@@ -87,8 +90,15 @@ const LoginForm = () => {
           onChange={onChange}
           required
         />
-        <div className="error">
-          <p className="wrong-password"></p>
+        <div className="err-msg-container">
+          {displayErrorMessage ? (
+            <div className="err-msg-wrapper">
+              <i className="fa-solid fa-circle-exclamation"></i>
+              <p>Your email or password is invalid</p>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <button type="submit" className="btn btn-login">
           Login

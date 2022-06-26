@@ -156,13 +156,19 @@ button {
         background-color: rgb(48, 109, 214);
       }
     }
-    .error {
+    .err-msg-container {
+      display: flex;
       width: 100%;
-      text-align: left;
-      color: rgb(255, 17, 17);
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 1px;
+      color: var(--clr-error);
+      text-align: left;
+      height: 2rem;
+      .err-msg-wrapper {
+        display: flex;
+        width: 100%;
+        gap: 0.4rem;
+      }
     }
   }
   .register-user,
@@ -179,6 +185,20 @@ button {
       &:hover {
         text-decoration: underline;
       }
+    }
+  }
+  .password-error-container {
+    display: flex;
+    width: 100%;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--clr-error);
+    text-align: left;
+    height: 2rem;
+    .password-error-wrapper {
+      display: flex;
+      width: 100%;
+      gap: 0.4rem;
     }
   }
 }
@@ -311,6 +331,7 @@ button {
         -o-transition: all 0.2s linear;
         transition: all 0.2s linear;
         padding: 0rem 0rem 1.6rem 0.8rem;
+        border: none;
         p {
           font-size: 0.8rem;
         }
@@ -801,6 +822,7 @@ button {
         }
         label {
           font-weight: 600;
+          font-size: 0.9rem;
           text-align: left;
           margin-bottom: 0.2rem;
         }
@@ -877,4 +899,8 @@ button {
     opacity: 1;
     transform: translateX(-50%) translateY(-6rem);
   }
+}
+
+.error-border {
+  border-color: var(--clr-error) !important;
 }

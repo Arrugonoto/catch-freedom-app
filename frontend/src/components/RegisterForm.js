@@ -5,6 +5,12 @@ import axios from "../api/axios";
 
 const REGISTER_URL = "/users/register";
 
+const EMAIL_REGEX = /^([a-z\d\._]+)@(company\.com)/;
+
+// const testName = "k.klekot@company.com";
+
+// console.log(EMAIL_REGEX.test(testName));
+
 const RegisterForm = () => {
   const { setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -15,6 +21,8 @@ const RegisterForm = () => {
     password: "",
     confirmPassword: "",
   });
+  const [emailErrMessage, setEmailErrMessage] = useState(false);
+  const [passwordErrMessage, setPasswordErrMessage] = useState(false);
 
   const { name, email, password, confirmPassword } = formData;
 
@@ -39,6 +47,8 @@ const RegisterForm = () => {
 
     if (password !== confirmPassword) {
       console.error(`Passwords doesn't match`);
+      setPasswordErrMessage(true);
+
       return;
     }
 
@@ -67,6 +77,10 @@ const RegisterForm = () => {
       navigate("/dashboard");
     }
   }, [isSuccess]);
+
+  useEffect(() => {
+    setPasswordErrMessage(false);
+  }, [password, confirmPassword]);
 
   return (
     <div className="center-container">
@@ -101,6 +115,7 @@ const RegisterForm = () => {
             value={password}
             placeholder="password"
             onChange={onChange}
+            className={`${passwordErrMessage ? "error-border" : ""}`}
             required
           />
           <label htmlFor="confirmPassword">Confirm password</label>
@@ -111,8 +126,19 @@ const RegisterForm = () => {
             value={confirmPassword}
             placeholder="confirm password"
             onChange={onChange}
+            className={`${passwordErrMessage ? "error-border" : ""}`}
             required
           />
+          <div className="password-error-container">
+            {passwordErrMessage ? (
+              <div className="password-error-wrapper">
+                <i className="fa-solid fa-circle-exclamation"></i>
+                <p>Passwords doesn't match each other</p>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
           <button type="submit" className="btn btn-login">
             Create account
           </button>

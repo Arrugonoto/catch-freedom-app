@@ -122,7 +122,6 @@ const NewDeviceMenu = ({ closeDeviceMenu }) => {
               value={platform}
               placeholder="webOS"
               onChange={onChange}
-              required
             />
             <label htmlFor="build_number">
               <p>Build number</p>
@@ -134,7 +133,6 @@ const NewDeviceMenu = ({ closeDeviceMenu }) => {
               value={build_number}
               placeholder="102"
               onChange={onChange}
-              required
             />
             <label htmlFor="serial_number">
               <p>Serial number</p>

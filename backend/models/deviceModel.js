@@ -4,7 +4,6 @@ const deviceSchema = mongoose.Schema(
   {
     build_number: {
       type: Number,
-      required: [true, "Please enter build number"],
     },
     manufacturer: {
       type: String,
@@ -16,7 +15,6 @@ const deviceSchema = mongoose.Schema(
     },
     platform: {
       type: String,
-      required: [true, "Please enter device platform(OS)"],
     },
     serial_number: {
       type: String,
