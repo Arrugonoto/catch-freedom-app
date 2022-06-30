@@ -72,15 +72,15 @@ Full-stack web application about renting devices.
    ```
   
    From now projects back-end script has been launched and nodemon is watching for changes.
-   
- 5. Open second command line in project root directory.
- 6. Move to frontend directory.
+ 
+5. Open second command line in project root directory.
+6. Move to frontend directory.
  
     ```
     cd frontend
     ```
     
- 7. Write the following commands in CLI in "frontend" directory:
+7. Write the following commands in CLI in "frontend" directory:
  
    ```
    npm install
@@ -94,5 +94,5 @@ Full-stack web application about renting devices.
    
    From now projects back-end script has been launched and webpack is watching for changes.
  
- 8. Don't close command lines.
- 9. Enjoy testing.
+8. Don't close command lines.
+9. Enjoy testing.
