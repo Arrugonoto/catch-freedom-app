@@ -1009,16 +1009,20 @@ button {
       border-radius: 1rem;
       background-color: var(--clr-rent);
       color: #fafafa;
+      -webkit-filter: drop-shadow(0px 0px 1rem rgba(0, 0, 0, 0.4));
       filter: drop-shadow(0px 0px 1rem rgba(0, 0, 0, 0.4));
       &::after {
         content: "";
         position: absolute;
         width: 4rem;
         height: 5rem;
+        -webkit-clip-path: polygon(50% 40%, 0 0, 100% 0);
         clip-path: polygon(50% 40%, 0 0, 100% 0);
         background-color: var(--clr-rent);
         bottom: -5rem;
         left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
         transform: translateX(-50%);
       }
     }
@@ -1034,4 +1038,15 @@ button {
 
 .error-border {
   border-color: var(--clr-error) !important;
+}
+
+@media only screen and (max-width: 460px) {
+  .form-container {
+    .login-form,
+    .register-form {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  }
 }

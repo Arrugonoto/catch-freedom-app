@@ -16,8 +16,14 @@
 }
 
 .loader-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   width: 100%;
   height: 80vh;
@@ -30,6 +36,7 @@
   display: inline-block;
   border-top: 0.2rem solid var(--clr-loader-primary);
   border-right: 0.2rem solid transparent;
+  -webkit-animation: rotation 1s linear infinite;
   animation: rotation 1s linear infinite;
 }
 .loader::after {
@@ -51,6 +58,7 @@
   display: inline-block;
   border-top: 0.2rem solid var(--clr-loader-primary);
   border-right: 0.2rem solid transparent;
+  -webkit-animation: rotation 1s linear infinite;
   animation: rotation 1s linear infinite;
 }
 .loader-admin::after {
@@ -66,11 +74,24 @@
   animation: rotation 0.5s linear infinite reverse;
 }
 
-@keyframes rotation {
+@-webkit-keyframes rotation {
   0% {
+    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
