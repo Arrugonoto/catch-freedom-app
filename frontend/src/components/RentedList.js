@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import AuthContext from "../context/authProvider";
 import axios from "../api/axios";
 import moment from "moment";
+import { Loader } from "./Loaders";
 
 const DEVICES_URL = "/devices/display-rented";
 const RETURN_URL = "/devices";
@@ -9,6 +10,7 @@ const RETURN_URL = "/devices";
 const RentedList = () => {
   const { auth } = useContext(AuthContext);
   const [devicesList, setDevicesList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getDevicesList = async () => {
     try {
@@ -20,6 +22,9 @@ const RentedList = () => {
       const dataFromResponse = await response.data;
 
       setDevicesList([...dataFromResponse]);
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
     } catch (error) {
       console.error(error);
     }
@@ -69,7 +74,9 @@ const RentedList = () => {
           </article>
         </div>
         <div className="deviceslist-wrapper">
-          {devicesList.length === 0 ? (
+          {loading ? (
+            <Loader />
+          ) : devicesList.length === 0 ? (
             <div className="deviceslist-norented">
               <h2>Currently, You don't have any rented devices</h2>
             </div>

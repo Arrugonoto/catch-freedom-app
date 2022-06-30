@@ -1,5 +1,5 @@
 import "./App.scss";
-import { useState } from "react";
+import "./styles/loaders.scss";
 import { Route, Routes, Navigate } from "react-router-dom";
 
 // components
