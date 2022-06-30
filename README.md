@@ -95,4 +95,4 @@ Full-stack web application about renting devices.
    From now projects back-end script has been launched and webpack is watching for changes.
  
 8. Don't close command lines.
-9. Enjoy testing.
+9. Enjoy testing :ok_hand:
