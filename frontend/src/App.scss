@@ -359,6 +359,13 @@ button {
         -ms-flex-direction: column;
         flex-direction: column;
         width: 100%;
+        li {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          width: 100%;
+          margin-bottom: 0.4rem;
+        }
         .nav-link {
           display: -webkit-box;
           display: -ms-flexbox;
@@ -367,13 +374,6 @@ button {
           width: 100%;
           font-size: 1.2rem;
           font-weight: 500;
-        }
-        li {
-          display: -webkit-box;
-          display: -ms-flexbox;
-          display: flex;
-          width: 100%;
-          color: var(--clr-gray);
           padding: 0.8rem;
           -webkit-transition: all 0.2s linear;
           -o-transition: all 0.2s linear;
@@ -383,6 +383,7 @@ button {
           -webkit-box-align: center;
           -ms-flex-align: center;
           align-items: center;
+          color: var(--clr-gray);
           &:hover {
             background-color: var(--clr-tertiary);
             color: #fff;
@@ -393,6 +394,11 @@ button {
           p {
             font-size: 0.9rem;
           }
+        }
+        .active {
+          background-color: var(--clr-tertiary);
+          color: #fff;
+          text-decoration: none;
         }
       }
     }
@@ -677,7 +683,7 @@ button {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 100%;
+  width: 85%;
   height: 100vh;
   overflow-y: scroll;
   .header-wrapper {

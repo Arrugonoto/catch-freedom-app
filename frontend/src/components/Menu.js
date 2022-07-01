@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../context/authProvider";
 
 const Menu = () => {
@@ -22,25 +22,25 @@ const Menu = () => {
       <nav className="menu-navigation">
         <div className="links-wrapper">
           <ul>
-            <Link to="/dashboard" className="nav-link">
-              <li>
+            <li>
+              <NavLink to="/dashboard" className="nav-link">
                 <i className="fa-solid fa-mobile-screen-button"></i>
                 <p>Devices list</p>
-              </li>
-            </Link>
-            <Link to="/devices/rented" className="nav-link">
-              <li>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/devices/rented" className="nav-link">
                 <i className="fa-solid fa-clock"></i>
                 <p>Rented devices</p>
-              </li>
-            </Link>
+              </NavLink>
+            </li>
             {auth.userRole === "administrator" && (
-              <Link to="/manage" className="nav-link">
-                <li>
+              <li>
+                <NavLink to="/manage" className="nav-link">
                   <i className="fa-solid fa-screwdriver-wrench"></i>
                   <p>Manage devices</p>
-                </li>
-              </Link>
+                </NavLink>
+              </li>
             )}
           </ul>
         </div>
