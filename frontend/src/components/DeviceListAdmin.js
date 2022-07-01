@@ -71,7 +71,6 @@ const DeviceListAdmin = ({ displayDeviceMenu }) => {
     <section className="devices-admin-container">
       <div className="header-wrapper">
         <h1>Manage</h1>
-
         <button
           onClick={() => {
             createNewDevice();

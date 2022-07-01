@@ -92,7 +92,7 @@ const RentedList = () => {
                       {moment(el.createdAt).format("DD-MM-YYYY")}
                     </p>
                   </div>
-                  <div className="device-btn-wrapper">
+                  <div className="device-btn-wrapper wrapper-return">
                     <button
                       onClick={() => {
                         returnDevice(el._id);

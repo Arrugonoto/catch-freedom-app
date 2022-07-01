@@ -434,7 +434,7 @@ button {
 .devices-container {
   width: 85%;
   height: 100vh;
-  overflow-y: scroll;
+  overflow: hidden;
   .devices-title {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -458,6 +458,7 @@ button {
     -ms-flex-direction: column;
     flex-direction: column;
     width: 100%;
+    height: 100vh;
     padding: 1rem 2rem;
     overflow-y: scroll;
   }
@@ -518,7 +519,7 @@ button {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        width: 60%;
+        width: 50%;
         .btn-sort {
           display: -webkit-box;
           display: -ms-flexbox;
@@ -548,7 +549,7 @@ button {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        width: 10%;
+        width: 20%;
         p {
           font-size: 1rem;
           font-weight: 500;
@@ -556,7 +557,6 @@ button {
       }
     }
   }
-
   .deviceslist-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -569,6 +569,9 @@ button {
     -webkit-box-align: start;
     -ms-flex-align: start;
     align-items: flex-start;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 0.6rem 0rem;
     .single-device {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -608,7 +611,7 @@ button {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        width: 60%;
+        width: 50%;
       }
       .device-btn-wrapper {
         display: -webkit-box;
@@ -629,7 +632,6 @@ button {
             background-color: rgb(124, 255, 218);
           }
         }
-
         .btn-return {
           color: var(--clr-rent);
           padding: 0.4rem 1.6rem;
@@ -644,6 +646,9 @@ button {
             background-color: rgb(124, 255, 218);
           }
         }
+      }
+      .wrapper-return {
+        width: 20%;
       }
     }
     .deviceslist-norented {
@@ -685,7 +690,7 @@ button {
   flex-direction: column;
   width: 85%;
   height: 100vh;
-  overflow-y: scroll;
+  overflow: hidden;
   .header-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -785,7 +790,9 @@ button {
       -ms-flex-direction: column;
       flex-direction: column;
       width: 100%;
-      padding: 1rem;
+      padding: 0.6rem 1rem;
+      height: 100vh;
+      overflow-y: scroll;
       .single-device-manage {
         -webkit-box-align: center;
         -ms-flex-align: center;
@@ -801,7 +808,8 @@ button {
           display: -ms-flexbox;
           display: flex;
           width: 21%;
-          font-weight: 500;
+          font-weight: 600;
+          font-size: 0.9rem;
           .available {
             color: var(--clr-rent);
           }
@@ -814,7 +822,7 @@ button {
           display: -ms-flexbox;
           display: flex;
           width: 10%;
-          font-weight: 500;
+          font-weight: 600;
           .status-working {
             color: rgb(60, 226, 27);
           }
