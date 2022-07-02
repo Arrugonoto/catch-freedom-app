@@ -13,35 +13,35 @@ Full-stack web application about renting devices.
       - delete device from assortment
 
 ### Prequisites 📚📓:scroll:
-    1. Good knowledge and understanding of HTML(5)
-    2. Basic knowledge and udnerstanding of CSS(3)
-    3. Good knowledge and understanding of JavaScript(ES6+)
-    4. Knowledge about functional and object oriented programming
-    5. Knowledge about asynchronous functions
-    6. Basic knowledge about Node Package Manager(Npm)
-    7. Knowledge about React and React Hooks:
-       * useState 
-       * useEffect 
-       * useRef 
-       * useContext
-    8. Knowledge about Node.js
-    9. Knowledge about MongoDB, MongoDB Atlas, Mongoose and querying in Mongo.
-    10. Knowledge about JSON data format and JSON Web Token.
-    11. Knowledge about the following packages:
-        * Front-end:
-          - axios
-          - moment
-          - react-router-dom
-          - sass
-        * Back-end:
-          - nodemon
-          - bcryptjs
-          - cors
-          - dotenv
-          - express
-          - express-async-handler
-          - jsonwebtoken
-          - mongoose
+1. Good knowledge and understanding of HTML(5)
+2. Basic knowledge and udnerstanding of CSS(3)
+3. Good knowledge and understanding of JavaScript(ES6+)
+4. Knowledge about functional and object oriented programming
+5. Knowledge about asynchronous functions
+6. Basic knowledge about Node Package Manager(Npm)
+7. Knowledge about React and React Hooks:
+   * useState 
+   * useEffect 
+   * useRef 
+   * useContext
+8. Knowledge about Node.js
+9. Knowledge about MongoDB, MongoDB Atlas, Mongoose and querying in Mongo.
+10. Knowledge about JSON data format and JSON Web Token.
+11. Knowledge about the following packages:
+    * Front-end:
+       - axios
+       - moment
+       - react-router-dom
+       - sass
+    * Back-end:
+       - nodemon
+       - bcryptjs
+       - cors
+       - dotenv
+       - express
+       - express-async-handler
+       - jsonwebtoken
+       - mongoose
           
           
 ### Tech Stack - MERN
