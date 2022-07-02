@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import AuthContext from "../context/authProvider";
 import { useNavigate } from "react-router-dom";
 import Menu from "../components/Menu";
+import MobileMenu from "../components/MobileMenu";
 import RentedList from "../components/RentedList";
 
 const RentedDevices = () => {
@@ -16,7 +17,10 @@ const RentedDevices = () => {
 
   return (
     <section className="renteddevices-container">
-      <Menu />
+      <div className="menu-containers-wrapper">
+        <Menu />
+        <MobileMenu />
+      </div>
       <RentedList />
     </section>
   );

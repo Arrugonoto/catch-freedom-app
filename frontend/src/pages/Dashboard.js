@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import AuthContext from "../context/authProvider";
 import { useNavigate } from "react-router-dom";
 import Menu from "../components/Menu";
+import MobileMenu from "../components/MobileMenu";
 import DevicesList from "../components/DevicesList";
 
 const Dashboard = () => {
@@ -16,7 +17,10 @@ const Dashboard = () => {
 
   return (
     <section className="dashboard-container">
-      <Menu />
+      <div className="menu-containers-wrapper">
+        <Menu />
+        <MobileMenu />
+      </div>
       <DevicesList />
     </section>
   );

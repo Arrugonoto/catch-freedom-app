@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../context/authProvider";
 import { useNavigate } from "react-router-dom";
 import Menu from "../components/Menu";
+import MobileMenu from "../components/MobileMenu";
 import DeviceListAdmin from "../components/DeviceListAdmin";
 import NewDeviceMenu from "../components/NewDeviceMenu";
 
@@ -18,7 +19,11 @@ const AdminPanel = () => {
 
   return (
     <section className="admin-panel-container">
-      <Menu />
+      <div className="menu-containers-wrapper">
+        <Menu />
+        <MobileMenu />
+      </div>
+
       {displayNewDeviceMenu ? (
         <NewDeviceMenu closeDeviceMenu={setDisplayNewDeviceMenu} />
       ) : (

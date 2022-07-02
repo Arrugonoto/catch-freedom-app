@@ -10,8 +10,9 @@ const DevicesList = () => {
   const { auth } = useContext(AuthContext);
   const [devicesList, setDevicesList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sortNameAscending, setSortNameAscending] = useState(true);
 
-  const getDevicesList = async () => {
+  const getDevicesListAsc = async () => {
     try {
       const response = await axios.get(DEVICES_URL, {
         headers: {
@@ -43,7 +44,9 @@ const DevicesList = () => {
   };
 
   useEffect(() => {
-    getDevicesList();
+    if (sortNameAscending) {
+      getDevicesListAsc();
+    }
   }, [devicesList]);
 
   return (
