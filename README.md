@@ -29,12 +29,12 @@ Full-stack web application about renting devices.
 9. Knowledge about MongoDB, MongoDB Atlas, Mongoose and querying in Mongo.
 10. Knowledge about JSON data format and JSON Web Token.
 11. Knowledge about the following packages:
-   * Front-end:
+    * Front-end:
      - axios
      - moment
      - react-router-dom
      - sass
-   * Back-end:
+    * Back-end:
      - nodemon
      - bcryptjs
      - cors
