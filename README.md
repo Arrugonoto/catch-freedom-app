@@ -30,19 +30,19 @@ Full-stack web application about renting devices.
 10. Knowledge about JSON data format and JSON Web Token.
 11. Knowledge about the following packages:
     * Front-end:
-     - axios
-     - moment
-     - react-router-dom
-     - sass
+      - axios
+      - moment
+      - react-router-dom
+      - sass
     * Back-end:
-     - nodemon
-     - bcryptjs
-     - cors
-     - dotenv
-     - express
-     - express-async-handler
-     - jsonwebtoken
-     - mongoose
+      - nodemon
+      - bcryptjs
+      - cors
+      - dotenv
+      - express
+      - express-async-handler
+      - jsonwebtoken
+      - mongoose
           
           
 ### Tech Stack - MERN
