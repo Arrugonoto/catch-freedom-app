@@ -13,6 +13,7 @@ Full-stack web application about renting devices.
       - delete device from assortment
 
 ### Prequisites 📚📓:scroll:
+
 1. Good knowledge and understanding of HTML(5)
 2. Basic knowledge and udnerstanding of CSS(3)
 3. Good knowledge and understanding of JavaScript(ES6+)
@@ -45,10 +46,10 @@ Full-stack web application about renting devices.
           
           
 ### Tech Stack - MERN
-    * MongoDB
-    * Express
-    * React
-    * Node
+   * MongoDB
+   * Express
+   * React
+   * Node
     
 ### Setup
 1. Download repository
