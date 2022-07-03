@@ -1144,7 +1144,7 @@ button {
       }
     }
     .expanded {
-      width: 12rem;
+      width: 15rem;
     }
   }
   .devices-container,
@@ -1166,8 +1166,14 @@ button {
       font-size: 1.6rem;
       background-color: transparent;
       border: none;
-      color: #fafafa;
+      color: var(--clr-gray);
+      -webkit-transition: all 0.2s linear;
+      -o-transition: all 0.2s linear;
+      transition: all 0.2s linear;
       padding: 0.3rem 0rem;
+      &:hover {
+        color: #fafafa;
+      }
     }
   }
 
