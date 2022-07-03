@@ -1016,7 +1016,8 @@ button {
   }
   .modal-container {
     position: absolute;
-    bottom: 8rem;
+    display: none;
+    bottom: 5rem;
     left: 50%;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
@@ -1027,7 +1028,7 @@ button {
     transition: all 0.3s linear;
     .modal-wrapper {
       position: relative;
-      padding: 2rem;
+      padding: 2rem 1rem;
       border-radius: 1rem;
       background-color: var(--clr-rent);
       color: #fafafa;
@@ -1049,12 +1050,16 @@ button {
       }
     }
   }
+  .modal-container.display {
+    display: flex;
+    opacity: 0;
+  }
   .modal-container.show {
     left: 50%;
     opacity: 1;
-    -webkit-transform: translateX(-50%) translateY(-4rem);
-    -ms-transform: translateX(-50%) translateY(-4rem);
-    transform: translateX(-50%) translateY(-4rem);
+    -webkit-transform: translateX(-50%) translateY(-100%);
+    -ms-transform: translateX(-50%) translateY(-100%);
+    transform: translateX(-50%) translateY(-100%);
   }
 }
 
@@ -1064,49 +1069,51 @@ button {
 
 @media only screen and (max-width: 1300px) {
   .menu-containers-wrapper {
-    width: 5%;
-    min-width: 5rem;
+    width: 4%;
+    min-width: 4rem;
     position: relative;
-    .btn-menu-wrapper {
-      .btn-menu {
-      }
-    }
     .menu-container {
       display: none;
     }
     .mobile-menu-container {
       display: flex;
       position: absolute;
-      padding: 2rem 0.3rem 1rem 0.3rem;
+      padding: 1rem 0.3rem 1rem 0.3rem;
       overflow: hidden;
+      width: 4rem;
+      z-index: 100;
+      transition: all 0.15s linear;
       .user-wrapper {
-        padding: 0;
         align-items: center;
-        justify-content: center;
-        gap: 3rem;
+        padding-top: 1rem;
+        justify-content: flex-start;
+        overflow: hidden;
         h1 {
-          display: none;
+          white-space: nowrap;
         }
       }
       .nav-link {
-        justify-content: center;
+        display: flex;
+        position: relative;
+        justify-content: flex-start;
         overflow: hidden;
-        width: 20rem;
-        gap: 3rem;
+        white-space: nowrap;
         i {
           font-size: 1.4rem;
         }
         p {
-          display: none;
+          position: absolute;
+          left: 3.5rem;
         }
       }
       .logout-wrapper {
         width: 100%;
         .btn-logout {
+          position: relative;
           align-items: center;
-          justify-content: center;
+          justify-content: flex-start;
           width: 100%;
-          padding: 0;
+          padding: 0rem 0rem 1rem 1rem;
           i {
             font-size: 1.4rem;
           }
@@ -1116,11 +1123,48 @@ button {
         }
       }
     }
+    .expanded {
+      width: 12rem;
+    }
   }
-
   .devices-container,
   .devices-admin-container {
-    width: 95%;
+    width: 96%;
+  }
+  .menu-btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    .btn-menu {
+      font-size: 1.6rem;
+      background-color: transparent;
+      border: none;
+      color: #fafafa;
+      padding: 0.3rem 0rem;
+    }
+  }
+
+  .device-btns-wrapper {
+    display: flex;
+    flex-direction: column;
+    button {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .new-device-container {
+    .form-wrapper {
+      padding-left: 0.5rem;
+    }
+    .btn-close-wrapper {
+      top: 0.3rem;
+      right: 0.2rem;
+      .btn-close {
+        font-size: 1.6rem;
+      }
+    }
   }
 }
 

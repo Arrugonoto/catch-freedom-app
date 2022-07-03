@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../context/authProvider";
 
 const MobileMenu = () => {
   const { auth, setAuth } = useContext(AuthContext);
+  const [isExpanded, setIsExpanded] = useState(false);
   const navigate = useNavigate();
 
   const logoutUser = () => {
@@ -12,7 +13,15 @@ const MobileMenu = () => {
   };
 
   return (
-    <aside className="mobile-menu-container">
+    <aside className={`mobile-menu-container ${isExpanded ? "expanded" : ""}`}>
+      <div className="menu-btn-wrapper">
+        <button
+          onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
+          className="btn btn-menu"
+        >
+          <i className="fa-solid fa-bars"></i>
+        </button>
+      </div>
       <div className="user-wrapper">
         <div>
           <i className="fa-solid fa-user"></i>

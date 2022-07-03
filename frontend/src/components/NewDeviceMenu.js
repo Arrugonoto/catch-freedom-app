@@ -45,11 +45,18 @@ const NewDeviceMenu = ({ closeDeviceMenu }) => {
   };
 
   const displayConfirmation = () => {
-    confirmationModal.current.classList.add("show");
+    confirmationModal.current.classList.add("display");
+    setTimeout(() => {
+      confirmationModal.current.classList.add("show");
+    }, 100);
 
     setTimeout(() => {
       confirmationModal.current.classList.remove("show");
-    }, 5000);
+    }, 5100);
+
+    setTimeout(() => {
+      confirmationModal.current.classList.remove("display");
+    }, 5500);
   };
 
   const addNewDevice = async (e) => {

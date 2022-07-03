@@ -1,6 +1,6 @@
 import "./App.scss";
 import "./styles/loaders.scss";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 // components
 import Home from "./pages/Home";
@@ -10,8 +10,6 @@ import RentedDevices from "./pages/RentedDevices";
 import AdminPanel from "./pages/AdminPanel";
 
 function App() {
-  // const [isSuccess, setIsSuccess] = useState(false);
-
   return (
     <>
       <main className="App">
@@ -38,7 +36,6 @@ function App() {
             element={<AdminPanel />}
           ></Route>
         </Routes>
-        {/* {isSuccess ? <Navigate to="/dashboard" /> : <Navigate to="/register" />} */}
       </main>
     </>
   );
