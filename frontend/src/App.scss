@@ -295,6 +295,8 @@ button {
 }
 
 .menu-containers-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 15%;
   min-width: 16rem;
@@ -1051,6 +1053,8 @@ button {
     }
   }
   .modal-container.display {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     opacity: 0;
   }
@@ -1076,16 +1080,24 @@ button {
       display: none;
     }
     .mobile-menu-container {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       position: absolute;
       padding: 1rem 0.3rem 1rem 0.3rem;
       overflow: hidden;
       width: 4rem;
       z-index: 100;
+      -webkit-transition: all 0.15s linear;
+      -o-transition: all 0.15s linear;
       transition: all 0.15s linear;
       .user-wrapper {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         padding-top: 1rem;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
         justify-content: flex-start;
         overflow: hidden;
         h1 {
@@ -1093,8 +1105,12 @@ button {
         }
       }
       .nav-link {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         position: relative;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
         justify-content: flex-start;
         overflow: hidden;
         white-space: nowrap;
@@ -1110,7 +1126,11 @@ button {
         width: 100%;
         .btn-logout {
           position: relative;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
           align-items: center;
+          -webkit-box-pack: start;
+          -ms-flex-pack: start;
           justify-content: flex-start;
           width: 100%;
           padding: 0rem 0rem 1rem 1rem;
@@ -1132,8 +1152,14 @@ button {
     width: 96%;
   }
   .menu-btn-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
     justify-content: flex-start;
     padding-left: 1rem;
     .btn-menu {
@@ -1146,10 +1172,19 @@ button {
   }
 
   .device-btns-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     button {
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
       justify-content: center;
     }
   }
